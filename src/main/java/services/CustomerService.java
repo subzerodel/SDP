@@ -1,6 +1,6 @@
 package services;
 
-import domain.Customer;
+import domain.models.Customer;
 import repositories.entities.CustomerRepository;
 import repositories.interfaces.ICustomerRepository;
 
@@ -11,11 +11,18 @@ public class CustomerService {
         csRepo = new CustomerRepository();
     }
 
-    public Customer getCustomer(long id){
+    public Customer getCustomer(long id) {
         return csRepo.getCustomerByID(id);
     }
-    public void addUser(String fname,String lname,String email,String password){
+
+    public void addCustomer(String fname,String lname,String email,String password){
         Customer customer=new Customer(fname,lname,email,password);
         csRepo.add(customer);
     }
+    //Qiyn joly You need to extend from Application
+
+   /* public void addCustomer(Customer cs) {
+        csRepo.add(cs);
+    }*/
+    //Onai joly!!! You need to extend from ResourceConfig
 }

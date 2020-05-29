@@ -1,4 +1,4 @@
-package domain;
+package domain.models;
 
 public class Customer {
     long id;
