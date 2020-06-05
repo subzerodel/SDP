@@ -7,7 +7,6 @@ import java.util.List;
 
 public interface IShoesRepository<T> {
     void addProduct(T entity);
-    //List<T> getProduct();
     List<Category> getCategories();
      List<Shoes> findCategoryByID(long id);
      List<Shoes> queryOne(String sql);

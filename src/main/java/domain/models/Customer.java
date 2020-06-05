@@ -4,25 +4,25 @@ public class Customer {
     long id;
     String fname;
     String lname;
-    String email;
+    String username;
     String password;
 
     public Customer(){
 
     }
 
-    public Customer(long id, String fname, String lname, String email, String password) {
+    public Customer(long id, String fname, String lname, String username, String password) {
         this.id = id;
         this.fname = fname;
         this.lname = lname;
-        this.email = email;
+        this.username = username;
         this.password = password;
     }
 
-    public Customer(String fname, String lname, String email, String password) {
+    public Customer(String fname, String lname, String username, String password) {
         this.fname = fname;
         this.lname = lname;
-        this.email = email;
+        this.username = username;
         this.password = password;
     }
 
@@ -51,11 +51,11 @@ public class Customer {
     }
 
     public String getEmail() {
-        return email;
+        return username;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.username = email;
     }
 
     public String getPassword() {

@@ -17,13 +17,6 @@ import java.util.Random;
 public class AuthorizationService implements IAuthorizationService {
     private final ICustomerRepository cs=new CustomerRepository();
 
-
-    @Override
-    public AccessToken authenticateCustomer(CustomerLoginData data) throws Exception {
-        Customer authenticatedCustomer=signIn(data);
-        return new AccessToken(issueToken(authenticatedCustomer));
-    }
-
     private Customer signIn(CustomerLoginData data) throws Exception {
     Customer customer=cs.findCustomerByID(data);
     if(customer==null){
@@ -32,9 +25,13 @@ public class AuthorizationService implements IAuthorizationService {
     return customer;
     }
 
+    public Customer getCustomerByEmail(String email){
+        return cs.getCustomerByEmail(email);
+    }
+
     private String issueToken(Customer customer){
         Instant now=Instant.now();
-        String secretWord="TheRealSlimShadyGreatestInLife";
+        String secretWord="TheRealSlimShadyTheGreatestInLife";
         return Jwts.builder()
                 .setIssuer(customer.getEmail())
                 .setIssuedAt(Date.from(now))
@@ -42,5 +39,11 @@ public class AuthorizationService implements IAuthorizationService {
                 .setExpiration(Date.from(now.plus(10, ChronoUnit.MINUTES)))
                 .signWith(Keys.hmacShaKeyFor(secretWord.getBytes()))
                 .compact();
+    }
+
+    @Override
+    public AccessToken authenticateCustomer(CustomerLoginData data) throws Exception {
+        Customer authenticatedCustomer=signIn(data);
+        return new AccessToken(issueToken(authenticatedCustomer));
     }
 }

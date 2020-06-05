@@ -2,15 +2,14 @@ package repositories.entities;
 
 import domain.CustomerLoginData;
 import domain.models.Customer;
+import domain.models.Sales_history;
 import repositories.db.PostgresRepository;
+import repositories.interfaces.IBuyRepository;
 import repositories.interfaces.ICustomerRepository;
 import repositories.interfaces.IDBRepository;
 
 import javax.ws.rs.BadRequestException;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.LinkedList;
 
 public class CustomerRepository implements ICustomerRepository<Customer> {
@@ -33,7 +32,7 @@ public class CustomerRepository implements ICustomerRepository<Customer> {
     }
     //Qiyn joly!!! To do this thing you need to extend from Application
 
-   /* @Override
+ /*   @Override
     public void add(Customer entity) {
         try {
             String sql = "INSERT INTO customers(fname,lname,email,password)" +
@@ -49,18 +48,10 @@ public class CustomerRepository implements ICustomerRepository<Customer> {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-    } //Onai joly!!! You need to extend from ResourceConfig*/
+    } *///Onai joly!!! You need to extend from ResourceConfig
 
 
-    @Override
-    public void remove(Customer entity) {
 
-    }
-
-    @Override
-    public void update(Customer entity) {
-
-    }
 
     @Override
     public Iterable<Customer> query(String sql) {
@@ -84,18 +75,12 @@ public class CustomerRepository implements ICustomerRepository<Customer> {
         }
         return null;
     }
-
-    @Override
-    public Customer getCustomerByID(long id) {
-        return null;
-    }
-
     @Override
     public Customer findCustomerByID(CustomerLoginData data) {
         try {
             String sql = "SELECT * FROM customers WHERE email=? AND password=?";
             PreparedStatement stmt = db.getConnection().prepareStatement(sql);
-            stmt.setString(1, data.getEmail());
+            stmt.setString(1, data.getUsername());
             stmt.setString(2, data.getPassword());
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
@@ -112,4 +97,51 @@ public class CustomerRepository implements ICustomerRepository<Customer> {
         }
         return null;
     }
+
+    @Override
+    public Customer getCustomerByEmail(String email) {
+        try{
+            String sql="SELECT * FROM customers WHERE email=?";
+            PreparedStatement stmt=db.getConnection().prepareStatement(sql);
+            stmt.setString(1,email);
+            ResultSet rs=stmt.executeQuery();
+            return new Customer(
+                    rs.getLong("id"),
+                    rs.getString("fname"),
+                    rs.getString("lname"),
+                    rs.getString("email"),
+                    rs.getString("password")
+            );
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public Customer queryOne(String sql) {
+        try{
+            Statement stmt=db.getConnection().createStatement();
+            ResultSet rs=stmt.executeQuery(sql);
+            if(rs.next()){
+                return new Customer(
+                  rs.getLong("id"),
+                  rs.getString("fname"),
+                  rs.getString("lname"),
+                  rs.getString("email"),
+                  rs.getString("password")
+                );
+            }
+        } catch (SQLException throwables) {
+            System.out.println("ouuu");;
+        }
+        return null;
+    }
+
+    @Override
+    public Customer getCustomerByID(long id) {
+        String sql="Select * from customers where id="+id;
+        return queryOne(sql);
+    }
+
 }

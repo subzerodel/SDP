@@ -1,6 +1,7 @@
 package services;
 
 import domain.models.Customer;
+import domain.models.Sales_history;
 import repositories.entities.CustomerRepository;
 import repositories.interfaces.ICustomerRepository;
 
@@ -25,4 +26,8 @@ public class CustomerService {
         csRepo.add(cs);
     }*/
     //Onai joly!!! You need to extend from ResourceConfig
+
+    public Customer getCustomerByID(long id){
+        return csRepo.getCustomerByID(id);
+    }
 }

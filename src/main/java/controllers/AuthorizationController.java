@@ -21,8 +21,7 @@ public class AuthorizationController {
     }
 
     @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response login(CustomerLoginData data){
         try{
             AccessToken token= authorizationService.authenticateCustomer(data);

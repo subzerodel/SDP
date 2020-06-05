@@ -16,7 +16,7 @@ public class ShoesController {
     }
     @GET
     public String hello(){
-        return "Hello, Dariya";
+        return "Hello";
     }
 
 

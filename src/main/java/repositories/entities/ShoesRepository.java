@@ -5,9 +5,6 @@ import domain.models.Shoes;
 import repositories.db.PostgresRepository;
 import repositories.interfaces.IDBRepository;
 import repositories.interfaces.IShoesRepository;
-
-import javax.ws.rs.BadRequestException;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -61,24 +58,24 @@ public class ShoesRepository implements IShoesRepository<Shoes> {
 
     @Override
     public List<Shoes> queryOne(String sql) {
-        try{
-            Statement stmt=db.getConnection().createStatement();
-            LinkedList<Shoes>shoes=new LinkedList<>();
-            ResultSet rs=stmt.executeQuery(sql);
-            while(rs.next()){
-                Shoes shoe=new Shoes(
+        try {
+            Statement stmt = db.getConnection().createStatement();
+            LinkedList<Shoes> shoes = new LinkedList<>();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                Shoes shoe = new Shoes(
                         rs.getLong("category_id"),
                         rs.getString("shoes_name"),
                         rs.getString("description"),
                         rs.getInt("price")
-                        );
+                );
                 shoes.add(shoe);
             }
             return shoes;
         } catch (SQLException ex) {
-            throw new BadRequestException("Cannot run SQL statement: " + ex.getMessage());
+            System.out.println("mwakDMKW");
         }
-
+        return null;
     }
 
     //    @Override
