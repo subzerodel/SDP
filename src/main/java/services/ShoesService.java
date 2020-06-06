@@ -6,6 +6,7 @@ import org.telegram.telegrambots.meta.TelegramBotsApi;
 import repositories.entities.ShoesRepository;
 import repositories.interfaces.IShoesRepository;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class ShoesService extends TelegramBotsApi {
@@ -20,8 +21,9 @@ public class ShoesService extends TelegramBotsApi {
         List<Category> categories= ish.getCategories();
         return categories;
     }
-    public List<Shoes> getCategory(long id){
-        List<Shoes>shoes=ish.findCategoryByID(id);
+
+    public List<Shoes> getCategory(long id) {
+    List<Shoes> shoes=ish.findCategoryByID(id);
         return shoes;
     }
 }

@@ -19,18 +19,6 @@ public class ShoesRepository implements IShoesRepository<Shoes> {
     }
 
     @Override
-    public void addProduct(Shoes entity) {
-        try {
-            Statement stmt = db.getConnection().createStatement();
-            String sql = "INSERT INTO shoes(categorie_id,shoes_name,description,price)" +
-                    "VALUES(" + entity.getCategory_id() + ",'" + entity.getShoes_name() + "','" + entity.getDescription() + "'," + entity.getPrice() + ")";
-            stmt.execute(sql);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-    }
-
-    @Override
     public List<Category> getCategories() {
         try {
             Statement st = db.getConnection().createStatement();
@@ -53,27 +41,27 @@ public class ShoesRepository implements IShoesRepository<Shoes> {
     @Override
     public List<Shoes> findCategoryByID(long id) {
         String sql="Select * from shoes where category_id="+id;
-        return queryOne(sql);
+        return query(sql);
     }
 
     @Override
-    public List<Shoes> queryOne(String sql) {
-        try {
-            Statement stmt = db.getConnection().createStatement();
-            LinkedList<Shoes> shoes = new LinkedList<>();
-            ResultSet rs = stmt.executeQuery(sql);
-            while (rs.next()) {
-                Shoes shoe = new Shoes(
-                        rs.getLong("category_id"),
-                        rs.getString("shoes_name"),
-                        rs.getString("description"),
-                        rs.getInt("price")
+    public List<Shoes> query(String sql) {
+        try{
+            Statement stmt=db.getConnection().createStatement();
+            LinkedList<Shoes> shoes=new LinkedList<>();
+            ResultSet res=stmt.executeQuery(sql);
+            while (res.next()){
+                Shoes shoe= new Shoes(
+                        res.getLong("category_id"),
+                        res.getString("shoes_name"),
+                        res.getString("description"),
+                        res.getInt("price")
                 );
                 shoes.add(shoe);
             }
-            return shoes;
-        } catch (SQLException ex) {
-            System.out.println("mwakDMKW");
+            return  shoes;
+        } catch (SQLException throwables) {
+            System.out.println("Erroe");
         }
         return null;
     }

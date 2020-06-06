@@ -26,7 +26,7 @@ public class AuthorizationService implements IAuthorizationService {
     }
 
     public Customer getCustomerByEmail(String email){
-        return cs.getCustomerByEmail(email);
+        return cs.getCustomerByUsername(email);
     }
 
     private String issueToken(Customer customer){

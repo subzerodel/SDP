@@ -37,4 +37,13 @@ public class Sales_history {
     public void setDate(Date date) {
         this.date = date;
     }
+
+    @Override
+    public String toString() {
+        return "Sales_history{" +
+                "id=" + id +
+                ", shoes_id=" + shoes_id +
+                ", date=" + date +
+                '}';
+    }
 }

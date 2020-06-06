@@ -6,8 +6,10 @@ import domain.models.Shoes;
 import java.util.List;
 
 public interface IShoesRepository<T> {
-    void addProduct(T entity);
+
     List<Category> getCategories();
-     List<Shoes> findCategoryByID(long id);
-     List<Shoes> queryOne(String sql);
+
+    List<Shoes> findCategoryByID(long id);
+
+    List<Shoes> query(String sql);
 }

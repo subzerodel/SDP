@@ -93,13 +93,13 @@ public class CustomerRepository implements ICustomerRepository<Customer> {
             }
 
         } catch (SQLException ex) {
-            throw new BadRequestException("Cannot run SQL statement: " + ex.getMessage());
+            System.out.println("ooo");
         }
         return null;
     }
 
     @Override
-    public Customer getCustomerByEmail(String email) {
+    public Customer getCustomerByUsername(String email) {
         try{
             String sql="SELECT * FROM customers WHERE email=?";
             PreparedStatement stmt=db.getConnection().prepareStatement(sql);

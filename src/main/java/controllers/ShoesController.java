@@ -30,7 +30,7 @@ public class ShoesController {
     @GET
     @Path("/category/{category_id}")
     public Response getCategoryByID(@PathParam("category_id") long id){
-        List<Shoes> shoes=sh.getCategory(id);
+        List<Shoes> shoes= (List<Shoes>) sh.getCategory(id);
         return Response.status(200).entity(shoes).build();
 
     }

@@ -47,4 +47,12 @@ public class Shoes {
     public void setPrice(int price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return "" +
+                " shoes_name='" + shoes_name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price+'\n';
+    }
 }

@@ -9,6 +9,6 @@ public interface ICustomerRepository<T> {
      Iterable<T> query(String sql);
     Customer getCustomerByID(long id);
     Customer findCustomerByID(CustomerLoginData data);
-    Customer getCustomerByEmail(String email);
+    Customer getCustomerByUsername(String email);
     Customer queryOne(String sql);
 }

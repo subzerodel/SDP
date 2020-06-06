@@ -1,7 +1,9 @@
 package repositories.interfaces;
 
 import domain.models.Sales_history;
+import domain.models.ShoppingCard;
 
 public interface IBuyRepository {
-    void salesHistory(Sales_history sh);
+    Sales_history salesHistory(Sales_history sh);
+    void buyingShoes(ShoppingCard sc);
 }

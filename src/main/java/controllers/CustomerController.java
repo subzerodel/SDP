@@ -43,7 +43,7 @@ public class CustomerController {
     }*/
         //Qiyn joly!!! To do this thing you need to extend from Application
 
-  /*  @POST
+   @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/create")
     public Response CreateCustomer(Customer customer) {
@@ -60,7 +60,7 @@ public class CustomerController {
                 .status(Response.Status.CREATED)
                 .entity("Created")
                 .build();
-    }*/
+    }
     //Onai joly!!! You need to extend from ResourceConfig
 
 
