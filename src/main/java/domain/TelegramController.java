@@ -1,19 +1,24 @@
+/*
 package controllers;
 
 import domain.models.*;
+import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import repositories.entities.CustomerRepository;
 import services.BuyService;
 import services.CustomerService;
 import services.ShoesService;
 
+import javax.ws.rs.GET;
 import java.util.List;
 
 public class TelegramController extends TelegramLongPollingBot {
 
     private ShoesService shoesService;
     private CustomerService customerService;
+    private CustomerRepository customerRepository;
     private BuyService buyService;
     private BotStatus status;
     private final String USERNAME = "omirdegen_bot";
@@ -69,13 +74,15 @@ public class TelegramController extends TelegramLongPollingBot {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
-                /*try {
+                */
+/*try {
                     List<Category> shoes = shoesService.categories();
                     sendingText = shoes.toString();
                     sendMessage.setText(sendingText);
                 } catch (Exception e) {
                     System.out.println(" Error ");
-                }*/
+                }*//*
+
 
         }
         else if (update.getMessage().getText().equals("/buy")) {
@@ -164,3 +171,4 @@ public class TelegramController extends TelegramLongPollingBot {
         return TOKEN;
     }
 }
+*/

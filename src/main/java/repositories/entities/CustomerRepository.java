@@ -2,13 +2,9 @@ package repositories.entities;
 
 import domain.CustomerLoginData;
 import domain.models.Customer;
-import domain.models.Sales_history;
 import repositories.db.PostgresRepository;
-import repositories.interfaces.IBuyRepository;
 import repositories.interfaces.ICustomerRepository;
 import repositories.interfaces.IDBRepository;
-
-import javax.ws.rs.BadRequestException;
 import java.sql.*;
 import java.util.LinkedList;
 
@@ -105,13 +101,15 @@ public class CustomerRepository implements ICustomerRepository<Customer> {
             PreparedStatement stmt=db.getConnection().prepareStatement(sql);
             stmt.setString(1,email);
             ResultSet rs=stmt.executeQuery();
-            return new Customer(
-                    rs.getLong("id"),
-                    rs.getString("fname"),
-                    rs.getString("lname"),
-                    rs.getString("email"),
-                    rs.getString("password")
-            );
+            if(rs.next()){
+                return new Customer(
+                        rs.getLong("id"),
+                        rs.getString("fname"),
+                        rs.getString("lname"),
+                        rs.getString("email"),
+                        rs.getString("password")
+                );
+            }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

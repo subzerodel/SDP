@@ -1,4 +1,4 @@
-import controllers.TelegramController;
+/*import controllers.TelegramController;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 
@@ -14,4 +14,4 @@ public class Main {
             e.printStackTrace();
         }
     }
-}
+}*/

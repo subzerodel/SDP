@@ -1,11 +1,9 @@
 package controllers;
 
 import domain.models.Customer;
-import org.glassfish.jersey.media.multipart.FormDataParam;
 import services.BuyService;
 import services.CustomerService;
 
-import javax.print.attribute.standard.Media;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;

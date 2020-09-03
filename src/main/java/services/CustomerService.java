@@ -7,6 +7,7 @@ import repositories.interfaces.ICustomerRepository;
 
 public class CustomerService {
     private ICustomerRepository csRepo;
+    private Customer cs=new Customer();
 
     public CustomerService() {
         csRepo = new CustomerRepository();
@@ -33,4 +34,5 @@ public class CustomerService {
     public Customer getCustomerByUsername(String username){
         return csRepo.getCustomerByUsername(username);
     }
+
 }
