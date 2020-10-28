@@ -18,7 +18,7 @@ public class AuthorizationController {
     }
 
     @GET
-    public String hello(){return "Beka";}
+    public String hello(){return "Stuck";}
 
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
