@@ -21,7 +21,7 @@ public class CustomerService {
         Customer customer=new Customer(fname,lname,email,password);
         csRepo.add(customer);
     }
-    //Qiyn joly You need to extend from Application
+    //Qiyn joly You need to extend from Application Talgat is god
 
     /*
     public void addCustomer(Customer cs) {
