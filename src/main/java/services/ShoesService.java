@@ -5,16 +5,10 @@ import domain.models.Shoes;
 import repositories.entities.ShoesRepository;
 import repositories.interfaces.IShoesRepository;
 
-import java.util.LinkedList;
 import java.util.List;
 
 public class ShoesService {
     private  final IShoesRepository ish=new ShoesRepository();
-
- /*   public void addShoesID(long category_id,String shoes_name, String description, int price){
-        Shoes shoes=new Shoes(category_id,shoes_name,description,price);
-        ish.addProduct(shoes);
-    }*/
 
     public List<Category> categories(){
         List<Category> categories= ish.getCategories();

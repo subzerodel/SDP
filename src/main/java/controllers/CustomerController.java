@@ -18,14 +18,7 @@ public class CustomerController {
         cs = new CustomerService();
         bc= new BuyService();
     }
-  /*  @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/buy")
-    public Response buy(
-            @FormDataParam("id") long id, @FormDataParam("shoes_id") long shoes_id, @FormDataParam("purchase_date") String date){
-        bc.buy(id,shoes_id,date);
-        return Response.status(200).entity("Thank you for buying").build();
-    }*/
+
     @GET
     public String hello() {
         return "Hello, world!";
@@ -41,28 +34,6 @@ public class CustomerController {
         cs.addCustomer(fname,lname,email,password);
         return Response.status(200).entity(fname+" is created").build();
     }
-        //Qiyn joly!!! To do this thing you need to extend from Application
-
-/*   @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/create")
-    public Response CreateCustomer(Customer customer) {
-        try {
-            cs.addCustomer(customer);
-        } catch (BadRequestException ex) {
-            return Response
-                    .status(Response.Status.BAD_REQUEST)
-                    .entity(ex.getMessage())
-                    .build();
-        }
-
-        return Response
-                .status(Response.Status.CREATED)
-                .entity("Created")
-                .build();
-    }*/
-    //Onai joly!!! You need to extend from ResourceConfig
-
 
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
