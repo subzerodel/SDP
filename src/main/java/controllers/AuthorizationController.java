@@ -5,9 +5,7 @@ import domain.CustomerLoginData;
 import services.AuthorizationService;
 import services.interfaces.IAuthorizationService;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -18,6 +16,9 @@ public class AuthorizationController {
     public AuthorizationController(){
         authorizationService=new AuthorizationService();
     }
+
+    @GET
+    public String hello(){return "Beka";}
 
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
