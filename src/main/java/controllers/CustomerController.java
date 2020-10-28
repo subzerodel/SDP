@@ -1,6 +1,7 @@
 package controllers;
 
 import domain.models.Customer;
+import org.glassfish.jersey.media.multipart.FormDataParam;
 import services.BuyService;
 import services.CustomerService;
 
@@ -25,11 +26,12 @@ public class CustomerController {
         bc.buy(id,shoes_id,date);
         return Response.status(200).entity("Thank you for buying").build();
     }*/
+    @GET
     public String hello() {
         return "Hello, world!";
     }
 
-/*  @POST
+  @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Path("/create")
     public Response addCustomer(@FormDataParam("fname") String fname,
@@ -38,10 +40,10 @@ public class CustomerController {
                                 @FormDataParam("password")String password) {
         cs.addCustomer(fname,lname,email,password);
         return Response.status(200).entity(fname+" is created").build();
-    }*/
+    }
         //Qiyn joly!!! To do this thing you need to extend from Application
 
-   @POST
+/*   @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/create")
     public Response CreateCustomer(Customer customer) {
@@ -58,7 +60,7 @@ public class CustomerController {
                 .status(Response.Status.CREATED)
                 .entity("Created")
                 .build();
-    }
+    }*/
     //Onai joly!!! You need to extend from ResourceConfig
 
 

@@ -2,14 +2,13 @@ package services;
 
 import domain.models.Category;
 import domain.models.Shoes;
-import org.telegram.telegrambots.meta.TelegramBotsApi;
 import repositories.entities.ShoesRepository;
 import repositories.interfaces.IShoesRepository;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class ShoesService extends TelegramBotsApi {
+public class ShoesService {
     private  final IShoesRepository ish=new ShoesRepository();
 
  /*   public void addShoesID(long category_id,String shoes_name, String description, int price){

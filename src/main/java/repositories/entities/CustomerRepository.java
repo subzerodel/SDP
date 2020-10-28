@@ -28,7 +28,7 @@ public class CustomerRepository implements ICustomerRepository<Customer> {
     }
     //Qiyn joly!!! To do this thing you need to extend from Application
 
- /*   @Override
+  /*  @Override
     public void add(Customer entity) {
         try {
             String sql = "INSERT INTO customers(fname,lname,email,password)" +
