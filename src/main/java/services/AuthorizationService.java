@@ -15,14 +15,18 @@ import java.util.Date;
 import java.util.Random;
 
 public class AuthorizationService implements IAuthorizationService {
-    private final ICustomerRepository cs=new CustomerRepository();
+    private final ICustomerRepository cs;
+
+    public AuthorizationService(){
+        cs = CustomerRepository.getInstance();
+    }
 
     private Customer signIn(CustomerLoginData data) throws Exception {
-    Customer customer=cs.findCustomerByID(data);
-    if(customer==null){
-        throw new Exception("Authentication failed");
-    }
-    return customer;
+        Customer customer=cs.findCustomerByID(data);
+        if(customer==null){
+            throw new Exception("Authentication failed");
+        }
+        return customer;
     }
 
     public Customer getCustomerByEmail(String email){
