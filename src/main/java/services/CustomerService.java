@@ -9,9 +9,8 @@ public class CustomerService {
     private Customer cs=new Customer();
 
     public CustomerService() {
-        csRepo = new CustomerRepository();
+        csRepo = CustomerRepository.getInstance();
     }
-
 
     public void addCustomer(String fname,String lname,String email,String password){
         Customer customer=new Customer(fname,lname,email,password);

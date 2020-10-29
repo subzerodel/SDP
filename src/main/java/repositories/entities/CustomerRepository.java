@@ -10,8 +10,17 @@ import java.util.LinkedList;
 
 public class CustomerRepository implements ICustomerRepository<Customer> {
     private IDBRepository db;
+    public static CustomerRepository customerRepository;
 
-    public CustomerRepository() {
+    public static CustomerRepository getInstance(){
+        if (customerRepository==null){
+            customerRepository = new CustomerRepository();
+            return customerRepository;
+        }
+        return null;
+    }
+
+    private CustomerRepository() {
         db = new PostgresRepository();
     }
 
